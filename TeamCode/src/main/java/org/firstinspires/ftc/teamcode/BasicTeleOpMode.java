@@ -5,7 +5,6 @@ wheels
 intake
 shooter
 
-
 for continuous rotational servos (mini motors)
 flower intake
 transfer
@@ -104,6 +103,11 @@ public class BasicTeleOpMode extends LinearOpMode {
 
 
             if (flowerIntakeRunning){
+               flowerIntakeRight.setPower(1);
+               flowerIntakeLeft.setPower(1);
+            } else {
+                flowerIntakeRight.setPower(0);
+                flowerIntakeLeft.setPower(0);
             }
 
 
