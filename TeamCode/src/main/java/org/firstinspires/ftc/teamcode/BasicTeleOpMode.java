@@ -24,7 +24,7 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 public class BasicTeleOpMode extends LinearOpMode {
     private DcMotor FLW, FRW, BLW, BRW;
     private DcMotorEx intake, launcher;
-    private CRServo flowerIntakeLeft, flowerIntakeRight, transfer;
+    //private CRServo flowerIntakeLeft, flowerIntakeRight, transfer;
     private boolean intakeRunning = false;
     private boolean launcherRunning = false;
     private boolean flowerIntakeRunning = false;
@@ -38,9 +38,9 @@ public class BasicTeleOpMode extends LinearOpMode {
         BRW = hardwareMap.get(DcMotor.class, "BRW");
 
 
-        flowerIntakeLeft = hardwareMap.get(CRServo.class, "flowerIntakeLeft");
-        flowerIntakeRight = hardwareMap.get(CRServo.class, "flowerIntakeRight");
-        transfer = hardwareMap.get(CRServo.class, "transfer");
+        //flowerIntakeLeft = hardwareMap.get(CRServo.class, "flowerIntakeLeft");
+        //flowerIntakeRight = hardwareMap.get(CRServo.class, "flowerIntakeRight");
+        //transfer = hardwareMap.get(CRServo.class, "transfer");
 
 
         intake = hardwareMap.get(DcMotorEx.class, "intake");
@@ -52,8 +52,8 @@ public class BasicTeleOpMode extends LinearOpMode {
         FRW.setDirection(DcMotorSimple.Direction.REVERSE);
         BRW.setDirection(DcMotorSimple.Direction.REVERSE);
         //flower intake directiions
-        flowerIntakeLeft.setDirection(CRServo.Direction.FORWARD);
-        flowerIntakeRight.setDirection(CRServo.Direction.REVERSE);
+        //flowerIntakeLeft.setDirection(CRServo.Direction.FORWARD);
+        //flowerIntakeRight.setDirection(CRServo.Direction.REVERSE);
         //flower intake directiions
 
 
@@ -103,11 +103,11 @@ public class BasicTeleOpMode extends LinearOpMode {
 
 
             if (flowerIntakeRunning){
-               flowerIntakeRight.setPower(1);
-               flowerIntakeLeft.setPower(1);
+               //flowerIntakeRight.setPower(1);
+               //flowerIntakeLeft.setPower(1);
             } else {
-                flowerIntakeRight.setPower(0);
-                flowerIntakeLeft.setPower(0);
+               //flowerIntakeRight.setPower(0);
+                //flowerIntakeLeft.setPower(0);
             }
 
 
@@ -119,9 +119,9 @@ public class BasicTeleOpMode extends LinearOpMode {
 
 
             if (gamepad1.right_trigger >= 0.5) {
-                transfer.setPower(1);
+                //transfer.setPower(1);
             } else {
-                transfer.setPower(0);
+                //transfer.setPower(0);
             }
 
 
