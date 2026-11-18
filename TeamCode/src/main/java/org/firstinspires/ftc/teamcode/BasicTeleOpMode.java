@@ -45,10 +45,13 @@ public class BasicTeleOpMode extends LinearOpMode {
         BLW.setDirection(DcMotorSimple.Direction.FORWARD);
         FRW.setDirection(DcMotorSimple.Direction.REVERSE);
         BRW.setDirection(DcMotorSimple.Direction.REVERSE);
+
+        launcher.setDirection(DcMotorSimple.Direction.FORWARD); //if launcher is spinning towards intake, reverse this
+
         //flower intake directions
         //flowerIntakeLeft.setDirection(CRServo.Direction.FORWARD);
         //flowerIntakeRight.setDirection(CRServo.Direction.REVERSE);
-        //flower intake directions
+
 
         waitForStart();
 
@@ -56,6 +59,7 @@ public class BasicTeleOpMode extends LinearOpMode {
             double y = gamepad1.left_stick_y;
             double x = gamepad1.left_stick_x;
 
+            //need to rework the driving controls
             if(Math.abs(y) >= 0.4 || Math.abs(x) >= 0.4) {
                 /*
                 FLW.setPower(y);
