@@ -1,10 +1,6 @@
 package org.firstinspires.ftc.teamcode;
-/*make:
-motors
-wheels
-intake
-shooter
 
+/*
 for continuous rotational servos (mini motors)
 flower intake
 transfer
@@ -34,9 +30,11 @@ public class BasicTeleOpMode extends LinearOpMode {
         BLW = hardwareMap.get(DcMotor.class, "BLW");
         BRW = hardwareMap.get(DcMotor.class, "BRW");
 
-        //flowerIntakeLeft = hardwareMap.get(CRServo.class, "flowerIntakeLeft");
-        //flowerIntakeRight = hardwareMap.get(CRServo.class, "flowerIntakeRight");
-        //transfer = hardwareMap.get(CRServo.class, "transfer");
+        /*
+        flowerIntakeLeft = hardwareMap.get(CRServo.class, "flowerIntakeLeft");
+        flowerIntakeRight = hardwareMap.get(CRServo.class, "flowerIntakeRight");
+        transfer = hardwareMap.get(CRServo.class, "transfer");
+        */
 
         intake = hardwareMap.get(DcMotorEx.class, "intake");
         launcher = hardwareMap.get(DcMotorEx.class, "launcher");
@@ -46,12 +44,13 @@ public class BasicTeleOpMode extends LinearOpMode {
         FRW.setDirection(DcMotorSimple.Direction.REVERSE);
         BRW.setDirection(DcMotorSimple.Direction.REVERSE);
 
-        launcher.setDirection(DcMotorSimple.Direction.FORWARD); //if launcher is spinning towards intake, reverse this
-
+        intake.setDirection(DcMotorSimple.Direction.FORWARD);
+        launcher.setDirection(DcMotorSimple.Direction.REVERSE); //if launcher is spinning towards intake, reverse this
+        /*
         //flower intake directions
-        //flowerIntakeLeft.setDirection(CRServo.Direction.FORWARD);
-        //flowerIntakeRight.setDirection(CRServo.Direction.REVERSE);
-
+        flowerIntakeLeft.setDirection(CRServo.Direction.FORWARD);
+        flowerIntakeRight.setDirection(CRServo.Direction.REVERSE);
+        */
 
         waitForStart();
 
@@ -60,17 +59,18 @@ public class BasicTeleOpMode extends LinearOpMode {
             double x = gamepad1.left_stick_x;
 
             //need to rework the driving controls
-            if(Math.abs(y) >= 0.4 || Math.abs(x) >= 0.4) {
-                /*
+            if(Math.abs(y) >= 0.4) {
                 FLW.setPower(y);
                 FRW.setPower(y);
                 BLW.setPower(y);
                 BRW.setPower(y);
-                 */
-                FLW.setPower(y + x);
-                FRW.setPower(y - x);
-                BLW.setPower(y + x);
-                BRW.setPower(y - x);
+                telemetry.addData("Y axis value: ", y);
+            } else if (Math.abs(x) >= 0.4) {
+                FLW.setPower(-x);
+                FRW.setPower(x);
+                BLW.setPower(-x);
+                BRW.setPower(x);
+                telemetry.addData("x axis value: ", x);
             } else {
                 FLW.setPower(0);
                 FRW.setPower(0);
@@ -100,13 +100,15 @@ public class BasicTeleOpMode extends LinearOpMode {
                 flowerIntakeRunning = true;
             }
 
+            /*
             if(flowerIntakeRunning){
-               //flowerIntakeRight.setPower(1);
-               //flowerIntakeLeft.setPower(1);
+                //flowerIntakeRight.setPower(1);
+                //flowerIntakeLeft.setPower(1);
             } else {
-               //flowerIntakeRight.setPower(0);
+                //flowerIntakeRight.setPower(0);
                 //flowerIntakeLeft.setPower(0);
             }
+            */
 
             if(launcherRunning) {
                 launcher.setPower(1);
@@ -114,11 +116,13 @@ public class BasicTeleOpMode extends LinearOpMode {
                 launcher.setPower(0);
             }
 
+            /*
             if(gamepad1.right_trigger >= 0.5) {
-                //transfer.setPower(1);
+                transfer.setPower(1);
             } else {
-                //transfer.setPower(0);
+                transfer.setPower(0);
             }
+            */
 
             telemetry.addData("Status", "Initialized");
             telemetry.update();
