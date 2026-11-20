@@ -45,7 +45,8 @@ public class BasicTeleOpMode extends LinearOpMode {
         BRW.setDirection(DcMotorSimple.Direction.REVERSE);
 
         intake.setDirection(DcMotorSimple.Direction.FORWARD);
-        launcher.setDirection(DcMotorSimple.Direction.REVERSE); //if launcher is spinning towards intake, reverse this
+        launcher.setDirection(DcMotorSimple.Direction.REVERSE);
+
         /*
         //flower intake directions
         flowerIntakeLeft.setDirection(CRServo.Direction.FORWARD);
@@ -77,7 +78,8 @@ public class BasicTeleOpMode extends LinearOpMode {
                 BLW.setPower(0);
                 BRW.setPower(0);
             }
-            //flower intake
+
+            //pollen intake
             if(intakeRunning) {
                 intake.setPower(1);
             } else {
@@ -88,6 +90,7 @@ public class BasicTeleOpMode extends LinearOpMode {
                 intakeRunning = !intakeRunning;
             }
 
+            //launcher
             if(gamepad1.crossWasPressed()) {
                 launcherRunning = !launcherRunning;
             }
